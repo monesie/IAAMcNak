@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+		"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+		"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<!-- Main template -->
+	<definition name="mainTemplate" template="/template/mainTemplate.jsp">
+		<put-attribute name="title" value="McNak"/>
+		<put-attribute name="header" value="/tiles/header.jsp"/>
+		<put-attribute name="footer" value="/tiles/footer.jsp"/>
+		<put-attribute name="userStatus" value="/tiles/userStatusForm.jsp"/>
+	</definition>
+
+<!-- general -->
+	<definition name="login" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/loginForm.jsp"/>
+	</definition>
+
+	<definition name="logout" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/logoutForm.jsp"/>
+	</definition>
+
+<!-- admin -->
+  <!-- usermanagement -->
+	<definition name="userListTable" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/admin/usermanagement/userListTable.jsp"/>
+	</definition>
+	<definition name="userForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/admin/usermanagement/userForm.jsp"/>
+	</definition>
+	<definition name="userResetPassword" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/admin/usermanagement/userResetPassword.jsp"/>
+	</definition>
+
+<!-- student -->
+  <!-- exam -->
+	<definition name="clozeForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/student/exam/clozeForm.jsp"/>
+	</definition>
+	<definition name="examListTable" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/student/exam/examListTable.jsp"/>
+	</definition>
+	<definition name="multipleChoiceForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/student/exam/multipleChoiceForm.jsp"/>
+	</definition>
+	<definition name="oneTimePasswordForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/student/exam/oneTimePasswordForm.jsp"/>
+	</definition>
+	<definition name="singleChoiceForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/student/exam/singleChoiceForm.jsp"/>
+	</definition>
+	<definition name="examFinishedForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/student/exam/examFinishedForm.jsp"/>
+	</definition>
+	<definition name="timeOver" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/student/exam/timeOver.jsp"/>
+	</definition>
+
+<!-- teacher -->
+  <!-- answer -->
+	<definition name="blankForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/answer/blankForm.jsp"/>
+	</definition>
+	<definition name="multipleChoiceAnswerListByQuestionId" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/answer/multipleChoiceAnswerListByQuestionId.jsp"/>
+	</definition>
+	<definition name="clozeAnswerListByQuestionId" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/answer/clozeAnswerListByQuestionId.jsp"/>
+	</definition>
+	<definition name="multipleChoiceAnswerForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/answer/multipleChoiceAnswerForm.jsp"/>
+	</definition>
+	<definition name="clozeAnswerForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/answer/clozeAnswerForm.jsp"/>
+	</definition>
+	<definition name="noAnswerFound" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/answer/noAnswerFound.jsp"/>
+	</definition>
+
+  <!-- exam -->
+	<definition name="examForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/exam/examForm.jsp"/>
+	</definition>
+	<definition name="examView" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/exam/examView.jsp"/>
+	</definition>
+	<definition name="participantListTable" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/exam/participantListTable.jsp"/>
+	</definition>
+	<definition name="noExamFound" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/student/exam/noExamFound.jsp"/>
+	</definition>
+
+  <!-- examData -->
+	<definition name="examDataForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/examData/examDataForm.jsp"/>
+	</definition>
+	<definition name="examDataListTable" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/examData/examDataListTable.jsp"/>
+	</definition>
+	<definition name="noExamDataFound" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/examData/noExamDataFound.jsp"/>
+	</definition>
+
+  <!-- question -->
+	<definition name="multipleChoiceQuestionForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/question/multipleChoiceQuestionForm.jsp"/>
+	</definition>
+	<definition name="createClozeQuestionForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/question/createClozeQuestionForm.jsp"/>
+	</definition>
+	<definition name="editClozeQuestionForm" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/question/editClozeQuestionForm.jsp"/>
+	</definition>
+	<definition name="questionListByExamDataId" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/question/questionListByExamDataId.jsp"/>
+	</definition>
+	<definition name="noQuestionfound" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/teacher/question/noQuestionFound.jsp"/>
+	</definition>
+
+</tiles-definitions>

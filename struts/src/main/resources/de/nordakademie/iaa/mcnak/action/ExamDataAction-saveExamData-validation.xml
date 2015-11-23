@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+    <field name="examData.examName">
+        <field-validator type="requiredstring">
+            <message key="error.fieldRequired"/>
+        </field-validator>
+    </field>
+    <field name="examData.courseName">
+        <field-validator type="requiredstring">
+            <message key="error.fieldRequired"/>
+        </field-validator>
+    </field>
+    <field name="examData.lastCourseDay">
+        <field-validator type="required">
+            <message key="error.fieldRequired"/>
+        </field-validator>
+    </field>
+    <field name="examData.startDate">
+        <field-validator type="required">
+            <message key="error.fieldRequired"/>
+        </field-validator>
+    </field>
+    <field name="examData.endDate">
+        <field-validator type="required">
+            <message key="error.fieldRequired"/>
+        </field-validator>
+    </field>
+    <field name="examData.duration">
+        <field-validator type="required">
+            <message key="error.fieldRequired"/>
+        </field-validator>
+        <field-validator type="int">
+            <message key="error.int"/>
+        </field-validator>
+    </field>
+    <field name="examData.creditPoint">
+        <field-validator type="required">
+            <message key="error.fieldRequired"/>
+        </field-validator>
+    </field>
+    <field name="examData.passLimit">
+        <field-validator type="required">
+            <message key="error.fieldRequired"/>
+        </field-validator>
+        <field-validator type="int">
+            <message key="error.int"/>
+        </field-validator>
+    </field>
+    <field name="examData.evaluationRule">
+        <field-validator type="required">
+            <message key="error.fieldRequired"/>
+        </field-validator>
+    </field>
+</validators>

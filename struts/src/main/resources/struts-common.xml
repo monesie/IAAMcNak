@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+        <package name="common" extends="tiles-default">
+                <action name="login" class="de.nordakademie.iaa.mcnak.action.LoginAction">
+                        <result type="tiles">login</result>
+                </action>
+                <action name="logout" class="de.nordakademie.iaa.mcnak.action.LoginAction"
+                        method="logout">
+                        <result type="tiles">logout</result>
+                </action>
+
+                <action name="validate" class="de.nordakademie.iaa.mcnak.action.LoginAction" method="validatePassword">
+                        <result name="error" type="tiles">login</result>
+                        <result name="Student" type="redirectAction">student/showExams</result>
+                        <result name="Teacher" type="redirectAction">teacher/showAllExamData</result>
+                        <result name="Admin" type="redirectAction">admin/showAllUser</result>
+                </action>
+        </package>
+</struts>

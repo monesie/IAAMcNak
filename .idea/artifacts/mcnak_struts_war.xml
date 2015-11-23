@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mcnak-struts:war">
+    <output-path>$PROJECT_DIR$/struts/target</output-path>
+    <root id="archive" name="mcnak-struts-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="mcnak-struts:war exploded" />
+    </root>
+  </artifact>
+</component>

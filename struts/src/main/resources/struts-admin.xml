@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+        <package name="admin" extends="tiles-default" namespace="/admin">
+                <!-- admin -->
+                <!-- actions for the usermanagement-->
+                <action name="cancelUser">
+                        <result type="redirectAction">showAllUser</result>
+                </action>
+                <action name="editUser" class="de.nordakademie.iaa.mcnak.action.UserAction"
+                        method="loadUser">
+                        <result type="tiles">userForm</result>
+                </action>
+                <action name="deleteUser" class="de.nordakademie.iaa.mcnak.action.UserAction"
+                        method="deleteUser">
+                        <result type="redirectAction">showAllUser</result>
+                </action>
+                <action name="newUser" class="de.nordakademie.iaa.mcnak.action.UserAction">
+                        <result type="tiles">userForm</result>
+                </action>
+                <action name="resetPassword" class="de.nordakademie.iaa.mcnak.action.UserAction"
+                        method="loadUser">
+                        <result type="tiles">userResetPassword</result>
+                </action>
+                <action name="showAllUser" class="de.nordakademie.iaa.mcnak.action.UserAction"
+                        method="loadAllUser">
+                        <result type="tiles">userListTable</result>
+                </action>
+                <action name="saveUser" class="de.nordakademie.iaa.mcnak.action.UserAction"
+                        method="saveUser">
+                        <result type="redirectAction">showAllUser</result>
+                        <result name="input" type="tiles">userForm</result>
+                </action>
+                <action name="savePassword" class="de.nordakademie.iaa.mcnak.action.UserAction"
+                        method="resetPassword">
+                        <result type="redirectAction">showAllUser</result>
+                </action>
+        </package>
+</struts>

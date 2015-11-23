@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+
+
+<struts>
+
+    <package name="common" namespace="common">
+        <interceptors>
+            <interceptor name="redirectMessage" class="my.struts.interceptor.RedirectMessageInterceptor" />
+            <interceptor-stack name="myStack">
+                <interceptor-ref name="redirectMessage" />
+                <interceptor-ref name="paramsPrepareParamsStack" />
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="myStack" />
+    </package>
+
+    <include file="struts-common.xml"/>
+    <include file="struts-admin.xml"/>
+    <include file="struts-student.xml"/>
+    <include file="struts-teacher.xml"/>
+</struts>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mcnak.iml" filepath="$PROJECT_DIR$/mcnak.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service/mcnak-service.iml" filepath="$PROJECT_DIR$/service/mcnak-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/struts/mcnak-struts.iml" filepath="$PROJECT_DIR$/struts/mcnak-struts.iml" />
+    </modules>
+  </component>
+</project>

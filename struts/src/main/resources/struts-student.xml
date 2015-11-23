@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+        <package name="student" extends="tiles-default" namespace="/student">
+
+                <!-- student -->
+                <!-- actions for the exam -->
+                <action name="showExams" class="de.nordakademie.iaa.mcnak.action.ExamAction"
+                        method="loadAllExamForCurrentUser">
+                        <result name="success" type="tiles">examListTable</result>
+                        <result name="noEntry" type="tiles">noExamFound</result>
+                </action>
+
+                <action name="showCloze" class="de.nordakademie.iaa.mcnak.action.UserEntryAction"
+                        method="initializeCloze">
+                        <result type="tiles">clozeForm</result>
+                </action>
+                <action name="showMultipleChoice" class="de.nordakademie.iaa.mcnak.action.UserEntryAction"
+                        method="initializeMultipleChoice">
+                        <result type="tiles">multipleChoiceForm</result>
+                </action>
+                <action name="showSingleChoice" class="de.nordakademie.iaa.mcnak.action.UserEntryAction"
+                        method="initialzeSingleChoice">
+                        <result type="tiles">singleChoiceForm</result>
+                </action>
+
+                <action name="takeExam" class="de.nordakademie.iaa.mcnak.action.ExamAction"
+                        method="loadExam">
+                        <result type="tiles">oneTimePasswordForm</result>
+                </action>
+                <action name="validateOTP" class="de.nordakademie.iaa.mcnak.action.ExamAction" method="validateOTP">
+                        <result name="error" type="tiles">oneTimePasswordForm</result>
+                        <result name="right" type="redirectAction">startExam</result>
+                </action>
+                <action name="startExam" class="de.nordakademie.iaa.mcnak.action.ExamAction" method="startExam">
+                        <result name="tooLate" type="redirectAction">rateExam</result>
+                        <result name="Cloze" type="redirectAction">showCloze</result>
+                        <result name="MultipleSelection" type="redirectAction">showMultipleChoice</result>
+                        <result name="SingleSelection" type="redirectAction">showSingleChoice</result>
+                </action>
+
+                <!-- Actions for the exams of a participant -->
+                <action name="showNextQuestion" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="loadNextQuestion">
+                        <result name="Cloze" type="redirectAction">showCloze</result>
+                        <result name="MultipleSelection" type="redirectAction">showMultipleChoice</result>
+                        <result name="SingleSelection" type="redirectAction">showSingleChoice</result>
+                        <result name="error" type="tiles">timeOver</result>
+                        <result name="success" type="redirectAction">rateExam</result>
+                </action>
+
+                <action name="rateExam" class="de.nordakademie.iaa.mcnak.action.ExamAction"
+                        method="rateExam">
+                        <result type="tiles">examFinishedForm</result>
+                </action>
+
+                <action name="saveMCUserEntry" class="de.nordakademie.iaa.mcnak.action.UserEntryAction"
+                        method="saveMultipleChoice">
+                        <result name="input" type="tiles">multipleChoiceForm</result>
+                        <result type="redirectAction">showNextQuestion</result>
+                </action>
+                <action name="saveSCUserEntry" class="de.nordakademie.iaa.mcnak.action.UserEntryAction"
+                        method="saveSingleChoice">
+                        <result name="input">singleChoiceForm</result>
+                        <result type="redirectAction">showNextQuestion</result>
+                </action>
+                <action name="saveClozeUserEntry" class="de.nordakademie.iaa.mcnak.action.UserEntryAction"
+                        method="saveCloze">
+                        <result name="input">ClozeForm</result>
+                        <result type="redirectAction">showNextQuestion</result>
+                </action>
+        </package>
+</struts>

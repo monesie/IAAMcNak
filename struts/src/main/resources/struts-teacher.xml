@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+        <package name="teacher" extends="tiles-default" namespace="/teacher">
+                <!-- teacher -->
+                <!-- actions for the exam -->
+                <action name="addParticipant" class="de.nordakademie.iaa.mcnak.action.ExamAction"
+                        method="prepareParticipantManagement">
+                        <result type="tiles">examForm</result>
+                </action>
+                <action name="goBackToExamDataListTable" class="de.nordakademie.iaa.mcnak.action.ExamAction"
+                        method="deleteExamDataIdFromSession">
+                        <result type="redirectAction">showAllExamData</result>
+                </action>
+                <action name="createExam" class="de.nordakademie.iaa.mcnak.action.ExamAction"
+                        method="createExam">
+                        <result type="redirectAction">addParticipant</result>
+                        <result name="error" type="tiles">examForm</result>
+                </action>
+                <action name="showExamList" class="de.nordakademie.iaa.mcnak.action.ExamAction"
+                        method="loadExamListByExamDataId">
+                        <result type="tiles">participantListTable</result>
+                </action>
+                <action name="deleteExam" class="de.nordakademie.iaa.mcnak.action.ExamAction"
+                        method="deleteExam">
+                        <result type="redirectAction">showExamList</result>
+                        <result name="error" type="tiles">participantListTable</result>
+                </action>
+
+                <!-- actions for the examData -->
+
+                <action name="createExamData">
+                        <result type="tiles">examDataForm</result>
+                </action>
+
+                <action name="saveExamData" class="de.nordakademie.iaa.mcnak.action.ExamDataAction"
+                        method="saveExamData">
+                        <result name="input" type="tiles">examDataForm</result>
+                        <result name="success" type="redirectAction">showAllExamData</result>
+                        <result name="error" type="tiles">examDataForm</result>
+                </action>
+
+                <action name="loadExamData" class="de.nordakademie.iaa.mcnak.action.ExamDataAction"
+                        method="loadExamData">
+                        <result type="tiles">examDataListTable</result>
+                </action>
+
+                <action name="editExamData" class="de.nordakademie.iaa.mcnak.action.ExamDataAction"
+                        method="loadExamData">
+                        <result type="tiles">examDataForm</result>
+                </action>
+
+                <action name="showAllExamData" class="de.nordakademie.iaa.mcnak.action.ExamDataAction"
+                        method="showAllExamDataByCreator">
+                        <result name="success" type="tiles">examDataListTable</result>
+                        <result name="noEntry" type="tiles">noExamDataFound</result>
+                </action>
+
+                <action name="deleteExamData" class="de.nordakademie.iaa.mcnak.action.ExamDataAction"
+                        method="deleteExamData">
+                        <result type="redirectAction">goBackToExamDataListTable</result>
+                </action>
+                <action name="examDataReady" class="de.nordakademie.iaa.mcnak.action.ExamDataAction"
+                        method="examDataReady">
+                        <result name="success" type="redirectAction">showAllExamData</result>
+                        <result name="error" type="tiles">examDataListTable</result>
+                </action>
+
+                <!-- actions for the question -->
+                <action name="cancelQuestionListForm" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="deleteCurrentExamDataIdFromSession">
+                        <result type="redirectAction">showAllExamData</result>
+                </action>
+
+                <action name="loadAllQuestions" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="loadQuestionListByExamDataId">
+                        <result name="success" type="tiles">questionListByExamDataId</result>
+                        <result name="noEntry" type="tiles">noQuestionfound</result>
+                </action>
+
+                <action name="addMultipleChoiceQuestion" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="loadExamDataIdFromSession">
+                        <result type="tiles">multipleChoiceQuestionForm</result>
+                </action>
+
+                <action name="addClozeQuestion" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="loadExamDataIdFromSession">
+                        <result type="tiles">createClozeQuestionForm</result>
+                </action>
+                <action name="saveClozeQuestion" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="saveClozeQuestion">
+                        <result name="success" type="redirectAction">generateBlanks</result>
+                        <result name="input" type="tiles">createClozeQuestionForm</result>
+                        <result name="error" type="tiles">createClozeQuestionForm</result>
+                </action>
+
+                <action name="editQuestion" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="loadQuestion">
+                        <result name="success" type="tiles">multipleChoiceQuestionForm</result>
+                        <result name="Cloze" type="tiles">editClozeQuestionForm</result>
+                        <result name="MultiSelection" type="tiles">multipleChoiceQuestionForm</result>
+                        <result name="SingleSelection" type="tiles">multipleChoiceQuestionForm</result>
+                </action>
+
+                <action name="cancelQuestionForm" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="deleteCurrentQuestionIdFromSession">
+                        <result type="redirectAction">loadAllQuestions</result>
+                </action>
+
+                <action name="saveQuestion" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="saveQuestion">
+                        <result name="input" type="tiles">multipleChoiceQuestionForm</result>
+                        <result type="redirectAction">loadAllQuestions</result>
+                </action>
+
+                <action name="deleteQuestion" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="deleteQuestion">
+                        <result type="redirectAction">loadAllQuestions</result>
+                </action>
+
+                <action name="putCurrentQuestionIdIntoSession" class="de.nordakademie.iaa.mcnak.action.QuestionAction"
+                        method="putCurrentQuestionIdIntoSession">
+                        <result name="error" type="tiles">questionListByExamDataId</result>
+                        <result type="redirectAction">loadAnswerList</result>
+                </action>
+                <!-- Actions for Answers -->
+
+                <action name="loadAnswerList" class="de.nordakademie.iaa.mcnak.action.AnswerAction"
+                        method="loadAllAnswerByQuestionId">
+                        <result name="MultipleSelection" type="tiles">multipleChoiceAnswerListByQuestionId</result>
+                        <result name="SingleSelection" type="tiles">multipleChoiceAnswerListByQuestionId</result>
+                        <result name="Cloze" type="tiles">clozeAnswerListByQuestionId</result>
+                        <result name="noEntry" type="tiles">noAnswerFound</result>
+                </action>
+
+                <action name="closeAnswerList" class="de.nordakademie.iaa.mcnak.action.AnswerAction"
+                        method="deleteQuestionIdFromSession">
+                        <result type="redirectAction">loadAnswerList</result>
+                </action>
+
+                <action name="generateBlanks" class="de.nordakademie.iaa.mcnak.action.AnswerAction"
+                        method="generateBlanks">
+                        <result name="success" type="tiles">blankForm</result>
+                        <result name="input" type="tiles">createClozeQuestionForm</result>
+                        <result name="error" type="tiles">createClozeQuestionForm</result>
+                </action>
+
+                <action name="addMultipleChoiceAnswer" class="de.nordakademie.iaa.mcnak.action.AnswerAction">
+                        <result type="tiles">multipleChoiceAnswerForm</result>
+                </action>
+
+                <action name="editAnswer" class="de.nordakademie.iaa.mcnak.action.AnswerAction"
+                        method="loadAnswer">
+                        <result name="MultipleSelection" type="tiles">multipleChoiceAnswerForm</result>
+                        <result name="SingleSelection" type="tiles">multipleChoiceAnswerForm</result>
+                        <result name="Cloze" type="tiles">clozeAnswerForm</result>
+                </action>
+
+                <action name="saveMultipleChoiceAnswer" class="de.nordakademie.iaa.mcnak.action.AnswerAction"
+                        method="saveAnswer">
+                        <result name="input" type="tiles">multipleChoiceAnswerForm</result>
+                        <result name="success" type="redirectAction">loadAnswerList</result>
+                        <result name="error" type="tiles">multipleChoiceAnswerForm</result>
+                </action>
+                <action name="saveClozeAnswer" class="de.nordakademie.iaa.mcnak.action.AnswerAction"
+                        method="saveAnswer">
+                        <result name="success" type="redirectAction">loadAnswerList</result>
+                        <result name="error" type="tiles">clozeAnswerForm</result>
+                </action>
+
+                <action name="saveClozeAnswerList" class="de.nordakademie.iaa.mcnak.action.AnswerAction"
+                        method="saveClozeAnswerList">
+                        <result name="success" type="redirectAction">loadAllQuestions</result>
+                        <result name="input" type="tiles">blankForm</result>
+                        <result name="error" type="tiles">blankForm</result>
+                </action>
+
+                <action name="deleteMultipleChoiceAnswer" class="de.nordakademie.iaa.mcnak.action.AnswerAction"
+                        method="deleteAnswer">
+                        <result type="redirectAction">loadAnswerList</result>
+                </action>
+                <action name="goBackToAnswerManagement" class="de.nordakademie.iaa.mcnak.action.AnswerAction">
+                        <result type="redirectAction">loadAnswerList</result>
+                </action>
+        </package>
+</struts>
